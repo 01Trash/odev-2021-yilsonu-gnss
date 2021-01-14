@@ -4,8 +4,8 @@ clear; close all; clc;
 t_GPS = 1; % tGPS
 
 %%% IGS BROADCAST EPHEMERIS FILE verileri
-SV_PRN = 18; % SV PRN
-t_0_c = 100; % t0c => 10 6 15 0 0 0.0
+%%%SV_PRN = 18; % SV PRN
+t_0_c = 10; % t0c => 10 6 15 0 0 0.0
 a_0 = -0.130765140057* 10 ^ (-3); % a0
 a_1 = -0.397903932026 * 10 ^ (-11); % a1
 a_2 =  0.000000000000 * 10 ^ (0); % a2
