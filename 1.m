@@ -24,7 +24,7 @@ i_0 = 0.965349772110 * 10 ^ (0); % i0
 C_r_c = 0.216531250000 * 10 ^ (3); % Crc
 W = 0.872701637012 * 10 ^ (0); % ω
 Ohm = -0.784425531615 * 10 ^ (-8); % Ω
-i = -0.118219210019 * 10 ^ (-9); % i
+i_t_k = -0.118219210019 * 10 ^ (-9); % i
 
 
 % Yerçekimi sabiti m^3/s^2 (WGS84)
@@ -45,15 +45,23 @@ n = n_0 + Delta_n;
 % t0e'ye göre zaman
 t_k = t_GPS - t_0_e;
 
-%%% Ortalama anomali
+% Ortalama anomali
 M_k = M_0 + n * t_k;
 
-%% Döngü İterasyon var!!! 
-%% Kepler denklemi
-%M_k = E_k - exp(1) * sin(E_k); 
+% İterasyon ile kepler denklemi
+E_k = M_k;
+E_k_n = 2;
+E_k_n1 = 1;
+while E_k_n - E_k_n1 >= 0.0000000000001
+    E_k_n = E_k;
+    E_k_n1 = M_k + exp(1) * sin(E_k);
+    E_k = E_k_n1;
+fprintf("Kepler: %.13f\n", E_k);
+end
+fprintf("Kepler: %.13f\n", E_k);
 
 % Gerçek anomali
-V_k = atan((sqrt(1 - exp(2)) * sin(E_k) / (cosE_k - exp(1)))); 
+V_k = atan((sqrt(1 - exp(2)) * sin(E_k) / (cos(E_k) - exp(1)))); 
 
 % Enlem argümanı
 U_k = W + V_k; 
@@ -87,9 +95,15 @@ y_ussu_k = r_k * sin(Fi_k);
 
 % x yermerkezli koordinatı
 x_k = x_ussu_k * cos(Ohm_k) - y_ussu_k * sin(Ohm_k) * cos(i_k);
+fprintf("x: %.4f\n", x_k);
 
 % y yermerkezli koordinatı
 y_k = x_ussu_k * sin(Ohm_k) + y_ussu_k * cos(Ohm_k) * cos(i_k); 
+fprintf("y: %.4f\n", y_k);
 
 % z yermerkezli koordinatı
 z_k = y_ussu_k * sin(i_k); 
+fprintf("z: %.4f\n", z_k);
+
+
+
