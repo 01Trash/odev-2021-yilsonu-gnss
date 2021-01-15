@@ -116,7 +116,7 @@ GAST = (16 + 0/60 + 0/3600) * 15 * pi / 180;
 RS = [cos(GAST) sin(GAST) 0; -sin(GAST) cos(GAST) 0; 0 0 1];
 % ECEF değerinden ECI değerine geçiş
 xyz_eci = xyz_ecef / RS;
-fprintf("Yer merkezli uzay sabit (ECI) x, y, z koordinatları \n");
+fprintf("\nYer merkezli uzay sabit (ECI) x, y, z koordinatları \n");
 fprintf("x: %.4f\n", xyz_eci(1, 1));
 fprintf("y: %.4f\n", xyz_eci(1, 2));
 fprintf("z: %.4f\n", xyz_eci(1, 3));
