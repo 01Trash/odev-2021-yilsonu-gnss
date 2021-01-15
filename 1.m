@@ -98,15 +98,15 @@ y_ussu_k = r_k * sin(Fi_k);
 fprintf("Yer merkezli yer sabit (ECEF) x, y, z koordinatları \n");
 % x yer merkezli koordinatı
 x_k = x_ussu_k * cos(Ohm_k) - y_ussu_k * sin(Ohm_k) * cos(i_k);
-fprintf("x: %.4f\n", x_k);
+fprintf("x: %.4f m\n", x_k);
 % y yer merkezli koordinatı
 y_k = x_ussu_k * sin(Ohm_k) + y_ussu_k * cos(Ohm_k) * cos(i_k);
-fprintf("y: %.4f\n", y_k);
+fprintf("y: %.4f m\n", y_k);
 % z yer merkezli koordinatı
 z_k = y_ussu_k * sin(i_k);
-fprintf("z: %.4f\n", z_k);
+fprintf("z: %.4f m\n", z_k);
 % Verileri dizin haline getirme
-xyz_ecef = [x_k y_k y_k];
+xyz_ecef = [x_k; y_k; y_k];
 
 
 %%% Yer merkezli uzay sabit (ECI) koordinatlarının hesabı
@@ -115,10 +115,10 @@ GAST = (16 + 0/60 + 0/3600) * 15 * pi / 180;
 % RS hesabı
 RS = [cos(GAST) sin(GAST) 0; -sin(GAST) cos(GAST) 0; 0 0 1];
 % ECEF değerinden ECI değerine geçiş
-xyz_eci = xyz_ecef / RS;
+xyz_eci = RS' * xyz_ecef;
 fprintf("\nYer merkezli uzay sabit (ECI) x, y, z koordinatları \n");
-fprintf("x: %.4f\n", xyz_eci(1, 1));
-fprintf("y: %.4f\n", xyz_eci(1, 2));
-fprintf("z: %.4f\n", xyz_eci(1, 3));
+fprintf("x: %.4f m\n", xyz_eci(1));
+fprintf("y: %.4f m\n", xyz_eci(2));
+fprintf("z: %.4f m\n", xyz_eci(3));
 
 
