@@ -4,7 +4,7 @@ clear; close all; clc;
 %%% IGS BROADCAST EPHEMERIS FILE verileri
 t_GPS = 319488; % tGPS
 %%%SV_PRN = 18; % SV PRN
-t_0_c = 10; % t0c => 10 6 15 0 0 0.0
+t_0_c = 16; % t0c
 a_0 = -0.130765140057* 10 ^ (-3); % a0
 a_1 = -0.397903932026 * 10 ^ (-11); % a1
 a_2 =  0.000000000000 * 10 ^ (0); % a2
@@ -53,7 +53,7 @@ M_k = M_0 + n * t_k;
 E_k = M_k;
 E_k_n = 2;
 E_k_n1 = 1;
-while E_k_n - E_k_n1 >= 0.0000000000001
+while E_k_n - E_k_n1 >= 0.000000001
     E_k_n = E_k;
     E_k_n1 = M_k + exp(1) * sin(E_k);
     E_k = E_k_n1;
@@ -106,7 +106,27 @@ fprintf("y: %.4f\n", y_k);
 z_k = y_ussu_k * sin(i_k);
 fprintf("z: %.4f\n", z_k);
 
+
 %%% Yer merkezli uzay sabit (ECI) koordinatlarının hesabı
+a = 26000;
+e = 0.001;
+v = 40 * pi / 180;
+r = a * (1 - e^2) / (1 + e * cos(v));
+xorb = r * [cos(v); sin(v); 0];
+w = 25 * pi / 180;
+Rw = [cos(-w) sin(-w) 0; -sin(-w) cos(-w) 0; 0 0 1];
+donukluk = Rw * xorb;
+i = 10 * pi / 180;
+Ri = [1 0 0; 0 cos(-i) sin(-i); 0 -sin(-i) cos(-i)];
+dondurme = Rw * Ri * xorb;
+O = 30 * pi / 180;
+RO = [cos(-O) sin(-O) 0; -sin(-O) cos(-O) 0; 0 0 1];
+xyz_eci = RO * Ri * Rw * xorb;
+
+% ECI değerinden ECEF değerine geçiş
+GAST = (2 + 36/60 + 0/3600) * 15 * pi / 180;
+RS = [cos(GAST) sin(GAST) 0; -sin(GAST) cos(GAST) 0; 0 0 1];
+xyz_ecef = RS * RO * Ri * Rw * xorb;
 
 
 
