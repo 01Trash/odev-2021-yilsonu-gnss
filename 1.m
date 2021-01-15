@@ -110,7 +110,6 @@ xyz_ecef = [x_k y_k y_k];
 
 
 %%% Yer merkezli uzay sabit (ECI) koordinatlarının hesabı
-
 % GAST hesabı
 GAST = (16 + 0/60 + 0/3600) * 15 * pi / 180;
 % RS hesabı
@@ -121,4 +120,5 @@ fprintf("Yer merkezli uzay sabit (ECI) x, y, z koordinatları \n");
 fprintf("x: %.4f\n", xyz_eci(1, 1));
 fprintf("y: %.4f\n", xyz_eci(1, 2));
 fprintf("z: %.4f\n", xyz_eci(1, 3));
+
 
