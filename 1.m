@@ -105,30 +105,20 @@ fprintf("y: %.4f\n", y_k);
 % z yer merkezli koordinatı
 z_k = y_ussu_k * sin(i_k);
 fprintf("z: %.4f\n", z_k);
+% Verileri dizin haline getirme
+xyz_ecef = [x_k y_k y_k];
 
 
 %%% Yer merkezli uzay sabit (ECI) koordinatlarının hesabı
-a = 26000;
-e = 0.001;
-v = 40 * pi / 180;
-r = a * (1 - e^2) / (1 + e * cos(v));
-xorb = r * [cos(v); sin(v); 0];
-w = 25 * pi / 180;
-Rw = [cos(-w) sin(-w) 0; -sin(-w) cos(-w) 0; 0 0 1];
-donukluk = Rw * xorb;
-i = 10 * pi / 180;
-Ri = [1 0 0; 0 cos(-i) sin(-i); 0 -sin(-i) cos(-i)];
-dondurme = Rw * Ri * xorb;
-O = 30 * pi / 180;
-RO = [cos(-O) sin(-O) 0; -sin(-O) cos(-O) 0; 0 0 1];
-xyz_eci = RO * Ri * Rw * xorb;
 
-% ECI değerinden ECEF değerine geçiş
-GAST = (2 + 36/60 + 0/3600) * 15 * pi / 180;
+% GAST hesabı
+GAST = (16 + 0/60 + 0/3600) * 15 * pi / 180;
+% RS hesabı
 RS = [cos(GAST) sin(GAST) 0; -sin(GAST) cos(GAST) 0; 0 0 1];
-xyz_ecef = RS * RO * Ri * Rw * xorb;
-
-
-
-
+% ECEF değerinden ECI değerine geçiş
+xyz_eci = xyz_ecef / RS;
+fprintf("Yer merkezli uzay sabit (ECI) x, y, z koordinatları \n");
+fprintf("x: %.4f\n", xyz_eci(1, 1));
+fprintf("y: %.4f\n", xyz_eci(1, 2));
+fprintf("z: %.4f\n", xyz_eci(1, 3));
 
