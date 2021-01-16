@@ -237,10 +237,10 @@ x = x * radius;
 y = y * radius;
 z = z * radius;
 % Dengeleme için
-offset1 = -32111477;
-offset2 = 25707892;
-offset3 = -33361783;
-surf(x+offset1,y+offset2,z+offset3)
+x2 = x + real(x_k_2);
+y2 = y + real(y_k_2);
+z2 = z + real(z_k_2);
+surf(x2,y2,z2)
 % Etiket yazdır
 xlabel('X', 'FontSize', 20);
 ylabel('Y', 'FontSize', 20);
