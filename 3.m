@@ -208,13 +208,13 @@ y_ussu_k = r_k * sin(Fi_k);
 %fprintf("\nYer merkezli yer sabit (ECEF) düzeltilmiş x, y, z koordinatları \n");
 % x yer merkezli koordinatı
 x_k_2 = x_ussu_k * cos(Ohm_k) - y_ussu_k * sin(Ohm_k) * cos(i_k);
-fprintf("x: %.4f m\n", x_k_2);
+%fprintf("x: %.4f m\n", x_k_2);
 % y yer merkezli koordinatı
 y_k_2 = x_ussu_k * sin(Ohm_k) + y_ussu_k * cos(Ohm_k) * cos(i_k);
-fprintf("y: %.4f m\n", y_k_2);
+%fprintf("y: %.4f m\n", y_k_2);
 % z yer merkezli koordinatı
 z_k_2 = y_ussu_k * sin(i_k);
-fprintf("z: %.4f m\n", z_k_2);
+%fprintf("z: %.4f m\n", z_k_2);
 
 
 % Dünya çizimi
