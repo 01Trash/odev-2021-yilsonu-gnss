@@ -217,13 +217,3 @@ z_k_2 = y_ussu_k * sin(i_k);
 fprintf("z: %.4f m\n", z_k_2);
 
 
-%%% Konum hatalarının hesabı
-fprintf("\nUydu yayın efemerisi konum hataları x, y, z \n");
-x = x_k_2 - x_k;
-fprintf("x: %.4f m\n", x);
-y = y_k_2 - y_k;
-fprintf("y: %.4f m\n", y);
-z = z_k_2 - z_k;
-fprintf("z: %.4f m\n", z);
-
-
