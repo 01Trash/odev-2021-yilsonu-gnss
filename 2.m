@@ -14,6 +14,6 @@ clear; close all; clc;
 % Nsr                    =>  Başlangıç tamsayı faz bilinmeyeni
 % dIsr(t)                =>  sinyal yolu iyonosfer gecikmesi
 % dTsr(t)                =>  sinyal yolu troposfer gecikmesi
-% dmsP,r(t), dmsΦ,r(t)   =>  sinyal yansıma (multipath) gecikmesi (kod ve faz)
-% esP,r(t), esΦ,r(t)     =>  rasgele gözlem hataları (kod ve faz)
+% dmsP, r(t), dmsΦ, r(t) =>  sinyal yansıma (multipath) gecikmesi (kod ve faz)
+% esP, r(t), esΦ, r(t)   =>  rasgele gözlem hataları (kod ve faz)
 
