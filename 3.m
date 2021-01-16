@@ -1,19 +1,28 @@
 clear; close all; clc;
 
-% Make unit sphere
+% 180 çizgili küre çiz
 [x,y,z] = sphere(180);
-% Scale to desire radius.
+% Yarıçap ayarla
 radius = 6373000;
 x = x * radius;
 y = y * radius;
 z = z * radius;
-% Translate sphere to new location.
+% Konum ayarla
 offset = 6373000;
-% Plot as surface.
 surf(x+offset,y+offset,z+offset) 
-% Label axes.
+% Etiket yazdır
 xlabel('X', 'FontSize', 20);
 ylabel('Y', 'FontSize', 20);
 zlabel('Z', 'FontSize', 20);
 axis equal;
+
+% hold on
+% [X,Y,Z] = sphere;
+% r = 100;
+% surf(X,Y,Z)
+% axis equal
+% X2 = X * r;
+% Y2 = Y * r;
+% Z2 = Z * r;
+% surf(X2,Y2,Z2)
 
