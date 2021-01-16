@@ -110,7 +110,10 @@ fprintf("z: %.4f m\n", z_k);
 S_s = a_0 + a_1 * (t_GPS - t_0_c) + a_2 * (t_GPS - t_0_c)^2;
 fprintf("\nSaat hatası: %.13f s\n", S_s);
 
+
+%%% IGS BROADCAST EPHEMERIS FILE verileri
 t_GPS = 319488 + S_s; % tGPS
+%%%SV_PRN = 18; % SV PRN
 t_0_c = 16; % t0c
 a_0 = -0.130765140057* 10 ^ (-3); % a0
 a_1 = -0.397903932026 * 10 ^ (-11); % a1
@@ -222,3 +225,5 @@ y = y_k_2 - y_k;
 fprintf("y: %.4f m\n", y);
 z = z_k_2 - z_k;
 fprintf("z: %.4f m\n", z);
+
+
