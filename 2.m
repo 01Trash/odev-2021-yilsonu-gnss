@@ -224,6 +224,6 @@ fprintf("x: %.4f m\n", x);
 y = y_k_2 - y_k;
 fprintf("y: %.4f m\n", y);
 z = z_k_2 - z_k;
-fprintf("z: %.4f m\n\n\n", z);
+fprintf("z: %.4f m\n", z);
 
 
